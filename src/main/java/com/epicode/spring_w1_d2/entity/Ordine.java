@@ -34,7 +34,8 @@ public class Ordine {
     @Value ("${application.costo_coperto}")
     double costoCoperto;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "ordine_id")
     private List<Menu> elementi;
 
     public double calcolaImportoTotale() {
